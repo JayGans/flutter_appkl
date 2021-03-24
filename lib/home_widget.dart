@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appkl/theme_changer.dart';
 import 'placeholder_widget.dart';
 import 'dashboard.dart';
 import 'collect.dart';
 import 'customer.dart';
 import 'invoice.dart';
 import 'more.dart';
+import 'ChartsDemo.dart';
 
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
+
   }
 }
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   String _title='Dashboard';
+  bool isSwitched = false;
+  var textValue = 'Switch is OFF';
   final List<Widget> _children = [ Dashboard(),
    Invoice(),
    Collect(),
@@ -25,6 +30,16 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: Text(_title),
+      actions: <Widget>[
+        Switch(
+          onChanged: toggleSwitch,
+          value: isSwitched,
+          activeColor: Colors.blue,
+          activeTrackColor: Colors.white,
+          inactiveThumbColor: Colors.black,
+          inactiveTrackColor: Colors.white,
+        )
+      ],
     ),
     body: _children[_currentIndex], // new
 
@@ -41,7 +56,7 @@ Widget build(BuildContext context) {
   elevation: 10,
       onTap: onTabTapped, // new
       currentIndex: _currentIndex, // new
-      backgroundColor: Color.fromARGB(255, 6, 33, 55),
+     // backgroundColor: Colors.white, //fromARGB(255, 6, 33, 55)
       selectedItemColor: Color.fromARGB(255, 47, 200, 233),
       unselectedItemColor: Color.fromARGB(255, 36, 94, 136),
       type: BottomNavigationBarType.fixed,
@@ -70,7 +85,27 @@ Widget build(BuildContext context) {
   ),
   );
 }
+  void toggleSwitch(bool value) {
 
+    if(isSwitched == false)
+    {
+      setState(() {
+        isSwitched = true;
+        ThemeBuilder.of(context).changeTheme();
+       // textValue = 'Switch Button is ON';
+      });
+      print('Switch Button is ON');
+    }
+    else
+    {
+      setState(() {
+        isSwitched = false;
+        ThemeBuilder.of(context).changeTheme();
+       // textValue = 'Switch Button is OFF';
+      });
+      print('Switch Button is OFF');
+    }
+  }
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
