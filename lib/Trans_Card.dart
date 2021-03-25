@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appkl/model/Trans_Data.dart';
 import 'package:flutter_appkl/theme_changer.dart';
 
+import 'invoice_details.dart';
+
 class Trans_Card extends StatelessWidget {
   final Trans_Data movie;
 
@@ -9,8 +11,12 @@ class Trans_Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-
+    return new InkWell(
+      onTap: () {
+        print("click"+ movie.client_nm);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => InvoiceDetailPage()));
+      },
       child: Column(
 
         children: <Widget>[

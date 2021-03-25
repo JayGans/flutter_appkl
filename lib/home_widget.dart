@@ -6,7 +6,7 @@ import 'collect.dart';
 import 'customer.dart';
 import 'invoice.dart';
 import 'more.dart';
-import 'ChartsDemo.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -36,8 +36,8 @@ Widget build(BuildContext context) {
           value: isSwitched,
           activeColor: Colors.blue,
           activeTrackColor: Colors.white,
-          inactiveThumbColor: Colors.black,
-          inactiveTrackColor: Colors.white,
+          inactiveThumbColor: Colors.blue,
+          inactiveTrackColor: Colors.black,
         )
       ],
     ),

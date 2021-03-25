@@ -6,10 +6,11 @@ import 'package:flutter_appkl/Trans_Card.dart';
 import 'package:flutter_appkl/model/Trans_Data.dart';
 
 import 'Trans_List.dart';
+import 'bar_chart.dart';
 
 class Dashboard extends StatelessWidget {
   List<Trans_Data> movies = Trans_List.getMovies();
-
+  List<double> covidUSADailyNewCases=[12.17, 11.15, 10.02, 11.21, 13.83, 14.16, 14.30];
   @override
   Widget build(BuildContext context) {
 
@@ -293,7 +294,13 @@ class Dashboard extends StatelessWidget {
                       ),
                     ],
                   ),
+Row(
 
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    CovidBarChart(covidCases: covidUSADailyNewCases),
+  ],
+),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
