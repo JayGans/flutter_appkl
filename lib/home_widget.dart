@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appkl/theme_changer.dart';
+import 'package:provider/provider.dart';
 import 'placeholder_widget.dart';
 import 'dashboard.dart';
 import 'collect.dart';
@@ -27,6 +28,7 @@ class _HomeState extends State<Home> {
   Customer(),More()];
 @override
 Widget build(BuildContext context) {
+  final themeProvider = Provider.of<ThemeProvider>(context);
   return Scaffold(
     appBar: AppBar(
       title: Text(_title),
@@ -91,7 +93,9 @@ Widget build(BuildContext context) {
     {
       setState(() {
         isSwitched = true;
-        ThemeBuilder.of(context).changeTheme();
+        final provider = Provider.of<ThemeProvider>(context, listen: false);
+        provider.toggleTheme(value);
+       // ThemeBuilder.of(context).changeTheme();
        // textValue = 'Switch Button is ON';
       });
       print('Switch Button is ON');
@@ -100,7 +104,9 @@ Widget build(BuildContext context) {
     {
       setState(() {
         isSwitched = false;
-        ThemeBuilder.of(context).changeTheme();
+        final provider = Provider.of<ThemeProvider>(context, listen: false);
+        provider.toggleTheme(value);
+        //ThemeBuilder.of(context).changeTheme();
        // textValue = 'Switch Button is OFF';
       });
       print('Switch Button is OFF');

@@ -35,6 +35,8 @@ dependencies:
   path_provider: ^1.6.1
   syncfusion_flutter_pdf: ^18.1.42-beta
   open_file: ^3.0.1
+  # state management
+  provider: ^4.3.2+3
 
 dev_dependencies:
   flutter_test:
